@@ -1,0 +1,37 @@
+<section
+  class="w-full rounded-3xl border border-slate-200 bg-white/90 p-8 shadow-xl backdrop-blur-sm"
+>
+  <div class="flex flex-col items-center gap-8 md:flex-row md:items-center md:justify-between">
+    
+    <div class="flex flex-1 flex-col items-center text-center md:items-start md:text-left">
+      <p class="text-sm font-medium uppercase tracking-[0.2em] text-blue-600">
+        Portfolio
+      </p>
+
+      <h1 class="mt-2 text-4xl font-extrabold tracking-tight text-slate-800 md:text-5xl">
+        {{ firstName }} <span class="text-blue-600">{{ lastName }}</span>
+      </h1>
+
+      <h2 class="mt-3 text-lg font-medium text-slate-600 md:text-xl">
+        {{ jobTitle }}
+      </h2>
+
+      <div class="mt-6 flex flex-wrap justify-center gap-3 md:justify-start">
+        <app-social-button
+          *ngFor="let link of socialLinks"
+          [icon]="link.icon"
+          [url]="link.url"
+        ></app-social-button>
+      </div>
+    </div>
+
+    <div class="flex justify-center">
+      <img
+        [src]="profileImage"
+        [alt]="firstName + ' ' + lastName"
+        class="h-40 w-40 rounded-full object-cover shadow-lg ring-4 ring-blue-100 md:h-52 md:w-52"
+      />
+    </div>
+
+  </div>
+</section>
