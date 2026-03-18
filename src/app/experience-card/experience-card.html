@@ -1,0 +1,75 @@
+<button
+  type="button"
+  (click)="toggleDescription()"
+  class="w-full rounded-3xl border border-slate-200 bg-white/90 p-5 text-left shadow-xl mb-4 transition-all duration-200 hover:-translate-y-1 hover:shadow-2xl hover:border-emerald-300 hover:ring-2 hover:ring-emerald-100 cursor-pointer"
+>
+
+  <div class="flex items-center gap-4">
+
+    <!-- Logo -->
+    <div class="flex-shrink-0">
+      <img
+        [src]="experience.companyLogo"
+        [alt]="experience.company"
+        class="h-12 w-12 rounded-xl object-contain bg-white p-1 border border-slate-200"
+      />
+    </div>
+
+    <!-- Contenu -->
+    <div class="flex flex-1 flex-col">
+
+      <!-- Nom entreprise -->
+      <p class="text-sm font-semibold text-emerald-600">
+        {{ experience.company }}
+      </p>
+
+      <!-- Poste -->
+      <h3 class="text-lg font-bold text-slate-800">
+        {{ experience.jobTitle }}
+      </h3>
+
+      <!-- Dates -->
+      <p class="text-sm text-slate-500 mt-1">
+        {{ experience.startDate | date: 'mediumDate' }} - {{ experience.endDate | date: 'mediumDate' }}
+      </p>
+
+    </div>
+
+    <!-- Icône ouverture -->
+    <div
+      class="ml-2 rounded-full border border-slate-200 p-2 text-slate-500 transition-transform duration-200"
+      [class.rotate-180]="isOpen"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        class="h-5 w-5"
+        viewBox="0 0 20 20"
+        fill="currentColor"
+      >
+        <path
+          fill-rule="evenodd"
+          d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+          clip-rule="evenodd"
+        />
+      </svg>
+    </div>
+
+  </div>
+
+  <!-- Détails (optionnel si tu veux garder le toggle) -->
+  @if (isOpen && experience.description.length > 0) {
+    <div class="mt-5 border-t border-slate-200 pt-4">
+
+      <ul class="space-y-2 text-slate-600">
+        @for (detail of experience.description; track detail) {
+          <li class="flex gap-3">
+            <span class="mt-2 h-2 w-2 rounded-full bg-emerald-500"></span>
+            <span>{{ detail }}</span>
+          </li>
+        }
+      </ul>
+
+    </div>
+  }
+
+</button>

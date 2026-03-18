@@ -1,0 +1,13 @@
+<section class="w-full p-8">
+  <h2 class="text-2xl font-bold text-slate-800">
+    {{ title }}
+  </h2>
+
+  <div class="mt-2 mb-6 h-1 w-24 rounded bg-emerald-500"></div>
+
+  <div class="space-y-5">
+    @for (experience of experiences; track experience.jobTitle + experience.company) {
+      <app-experience-card [experience]="experience"></app-experience-card>
+    }
+  </div>
+</section>
