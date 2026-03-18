@@ -1,4 +1,5 @@
 <section class="w-full p-8">
+
   <h2 class="text-2xl font-bold text-slate-800">
     {{ title }}
   </h2>
@@ -6,8 +7,9 @@
   <div class="mt-2 mb-6 h-1 w-24 rounded bg-blue-500"></div>
 
   <div class="space-y-5">
-    @for (experience of experiences; track experience.jobTitle + experience.company) {
-      <app-experience-card [experience]="experience"></app-experience-card>
+    @for (education of educations; track education.degree + education.school) {
+      <app-education-card [education]="education"></app-education-card>
     }
   </div>
+
 </section>
