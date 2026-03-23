@@ -3,6 +3,8 @@ import { HeaderComponent } from './header/header';
 import { AboutMeComponent } from './about-me/about-me';
 import { ExperiencesComponent } from './experiences/experiences';
 import { EducationComponent } from './education/education';
+import { SkillsComponent } from './skills/skills';
+import { LanguagesComponent } from './languages/languages';
 
 @Component({
   selector: 'app-root',
@@ -11,9 +13,11 @@ import { EducationComponent } from './education/education';
     AboutMeComponent,
     ExperiencesComponent,
     EducationComponent,
+    SkillsComponent,
+    LanguagesComponent,
   ],
   templateUrl: './app.html',
-  styleUrl: './app.scss'
+  styleUrls: ['./app.scss']
 })
 export class App {
 }
