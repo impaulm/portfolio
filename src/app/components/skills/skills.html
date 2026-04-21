@@ -1,0 +1,33 @@
+<section class="w-full p-8">
+  <h2 class="text-2xl font-bold text-slate-800">
+    {{ title }}
+  </h2>
+
+  <div class="mt-2 mb-6 h-1 w-24 rounded bg-blue-500"></div>
+
+  <div class="space-y-8">
+    <div>
+      <h3 class="mb-4 text-lg font-medium text-slate-800">
+        Languages & frameworks
+      </h3>
+
+      <div class="flex flex-wrap gap-3">
+        @for (skill of skills.technicalSkills; track skill) {
+          <app-skill-badge [label]="skill"></app-skill-badge>
+        }
+      </div>
+    </div>
+
+    <div>
+      <h3 class="mb-4 text-lg font-medium text-slate-800">
+        Logiciels & outils
+      </h3>
+
+      <div class="flex flex-wrap gap-3">
+        @for (tool of skills.softwareSkills; track tool) {
+          <app-skill-badge [label]="tool"></app-skill-badge>
+        }
+      </div>
+    </div>
+  </div>
+</section>

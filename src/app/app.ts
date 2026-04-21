@@ -1,14 +1,18 @@
-import { Component, signal } from '@angular/core';
-import { HeaderComponent } from './header/header';
-import { AboutMeComponent } from './about-me/about-me';
-import { ExperiencesComponent } from './experiences/experiences';
-import { EducationComponent } from './education/education';
-import { SkillsComponent } from './skills/skills';
-import { LanguagesComponent } from './languages/languages';
-import { WorksComponent } from './works/works';
+import { Component, inject } from '@angular/core';
+import { toSignal } from '@angular/core/rxjs-interop';
+import { HeaderComponent } from './components/header/header';
+import { AboutMeComponent } from './components/about-me/about-me';
+import { ExperiencesComponent } from './components/experiences/experiences';
+import { EducationComponent } from './components/education/education';
+import { SkillsComponent } from './components/skills/skills';
+import { LanguagesComponent } from './components/languages/languages';
+import { WorksComponent } from './components/works/works';
+import { PortfolioDataService } from './services/portfolio-data.service';
+import { PortfolioData } from './models/portfolio-data.model';
 
 @Component({
   selector: 'app-root',
+  standalone: true,
   imports: [
     HeaderComponent,
     AboutMeComponent,
@@ -16,10 +20,16 @@ import { WorksComponent } from './works/works';
     EducationComponent,
     SkillsComponent,
     LanguagesComponent,
-    WorksComponent,
+    WorksComponent
   ],
   templateUrl: './app.html',
   styleUrls: ['./app.scss']
 })
-export class App {
+export class AppComponent{
+  private portfolioDataService = inject(PortfolioDataService);
+
+  portfolioData = toSignal<PortfolioData | undefined>(
+    this.portfolioDataService.getPortfolioData(),
+    { initialValue: undefined }
+  );
 }

@@ -1,23 +1,13 @@
 <main class="min-h-screen bg-gradient-to-br from-slate-100 via-white to-slate-200 px-4 py-6">
   <div class="mx-auto max-w-4xl">
-    <app-header></app-header>
-  </div>
-  <div class="mx-auto max-w-4xl">
-    <app-about-me></app-about-me>
-  </div>
-  <div class="mx-auto max-w-4xl">
-    <app-experiences></app-experiences>
-  </div>
-  <div class="mx-auto max-w-4xl">
-    <app-education></app-education>
-  </div>
-  <div class="mx-auto max-w-4xl">
-    <app-languages></app-languages>
-  </div>
-  <div class="mx-auto max-w-4xl">
-    <app-skills></app-skills>
-  </div>
-  <div class="mx-auto max-w-4xl">
-    <app-works></app-works>
+    @if (portfolioData(); as data) {
+      <app-header [data]="data.header"></app-header>
+      <app-about-me [data]="data.aboutMe"></app-about-me>
+      <app-experiences [experiences]="data.experiences"></app-experiences>
+      <app-education [educations]="data.educations"></app-education>
+      <app-skills [skills]="data.skills"></app-skills>
+      <app-languages [languages]="data.languages"></app-languages>
+      <app-works [works]="data.works"></app-works>
+    } 
   </div>
 </main>
